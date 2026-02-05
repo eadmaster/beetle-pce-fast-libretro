@@ -2615,6 +2615,8 @@ void *retro_get_memory_data(unsigned type)
          return BaseRAM;
       case RETRO_MEMORY_VIDEO_RAM:
          return vdc->VRAM;
+      case RETRO_MEMORY_ROM:
+         return ROMSpace;
       default:
          break;
    }
@@ -2634,6 +2636,8 @@ size_t retro_get_memory_size(unsigned type)
          return 8192;
       case RETRO_MEMORY_VIDEO_RAM:
          return 65536;
+      case RETRO_MEMORY_ROM:
+         return (0x88 * 8192 + 8192);  // TODO: dynamic based on loaded content?
       default:
          break;
    }
